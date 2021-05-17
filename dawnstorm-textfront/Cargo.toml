@@ -8,5 +8,6 @@ edition = "2018"
 
 [dependencies]
 colored = "2.0.0"
-dawnstorm-core = { version = "0.2.0", path = "../dawnstorm-core", features = ["default_gen"] }
+dawnstorm-core = { version = "0.2.0", path = "../dawnstorm-core" }
+phf = "0.8.0"
 rustyline = "8.0.0"

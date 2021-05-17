@@ -1,0 +1,10 @@
+{
+	"description": "One of the Nicest places this time of year.",
+	"aliases": [],
+	"children": [
+		{"description": "A winding vine-laden path spirals up to the castle hilltop.",
+		"aliases": ["up", "path"],
+		"children": [],
+		"commands": ["move": "castle_path"]}
+	]
+}
