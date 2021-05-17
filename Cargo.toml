@@ -1,0 +1,3 @@
+[workspace]
+members = ["dawnstorm-textfront", "dawnstorm-core"]
+
