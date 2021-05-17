@@ -1,7 +1,9 @@
+pub mod defaults;
 pub mod entity;
 pub mod item;
 pub mod load_methods;
 pub mod profession;
+pub mod savegame;
 pub mod world;
 
 #[cfg(test)]

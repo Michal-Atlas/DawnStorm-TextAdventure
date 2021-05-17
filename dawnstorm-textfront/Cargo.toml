@@ -7,5 +7,6 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-ansi_term = "0.12.1"
+colored = "2.0.0"
 dawnstorm-core = { version = "0.2.0", path = "../dawnstorm-core", features = ["default_gen"] }
+rustyline = "8.0.0"

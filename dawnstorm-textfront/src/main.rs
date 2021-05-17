@@ -1,19 +1,38 @@
-use std::io::{stdin, stdout, Write};
-
-use ansi_term::Colour::Cyan;
-use dawnstorm_core::load_methods::*;
+mod create_character;
+mod parser;
+use colored::*;
+use create_character::create_character;
+use dawnstorm_core::defaults::DEFAULT_WORLD;
+use parser::parser;
+use rustyline::{error::ReadlineError, Editor};
 
 fn main() {
-    write_player();
-    let player = Box::new(load_player().expect("Player Load"));
-    let world = load_world().expect("Map Load");
+    let mut world = DEFAULT_WORLD.clone();
+    let player = create_character();
+    if player.is_none() {
+        return;
+    }
+    let mut player = player.unwrap();
 
-    let stdin = stdin();
-    let mut run = true;
-    while run {
-        print!("{} ", Cyan.bold().paint(">>"));
-        stdout().flush();
-        let mut input = String::new();
-        stdin.read_line(&mut input);
+    let mut rl = Editor::<()>::new();
+
+    loop {
+        let line = rl.readline(">> ");
+        match line {
+            Ok(l) => {
+                rl.add_history_entry(l.as_str());
+                if l == "exit" {
+                    break;
+                }
+                parser(&mut player, &mut world, &l);
+            }
+            Err(ReadlineError::Eof) => {
+                println!("{}", "Sorry to see you go".bright_red().bold());
+                break;
+            }
+            _ => {
+                panic!("Error in Parsing")
+            }
+        }
     }
 }

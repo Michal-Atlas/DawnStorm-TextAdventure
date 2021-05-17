@@ -1,17 +1,10 @@
-use std::collections::HashMap;
+pub type World = Node;
+pub type Action = Option<&'static dyn Fn()>;
 
-use serde::{Deserialize, Serialize};
-
-pub type World = HashMap<String, Node>;
-
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Clone)]
 pub struct Node {
-    pub name: String,
-    pub edges: Vec<Edge>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Edge {
-    pub target: String,
-    pub flags: Vec<String>,
+    pub name: &'static str,
+    pub aliases: &'static [&'static str],
+    pub children: &'static [Node],
+    pub r#move: Action,
 }
