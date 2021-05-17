@@ -15,9 +15,9 @@ pub struct Node {
 
 impl Display for Node {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self.description)?;
+        write!(f, "{} ", self.description)?;
         for c in &self.children {
-            write!(f, "{}", c.description)?;
+            write!(f, "{} ", c.description)?;
         }
         Ok(())
     }

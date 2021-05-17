@@ -1,6 +1,6 @@
-use colored::*;
+
 use dawnstorm_core::entity::{Entity, Size, Stat};
-use rustyline::{error::ReadlineError, Editor};
+
 use std::collections::HashMap;
 
 macro_rules! get_stat {
@@ -28,7 +28,7 @@ macro_rules! get_stat {
 }
 
 pub fn create_character() -> Option<Entity> {
-    let mut player = Entity {
+    let player = Entity {
         body: Stat::new(5),
         soul: Stat::new(5),
         influence: Stat::new(5),

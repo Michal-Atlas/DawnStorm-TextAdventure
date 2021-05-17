@@ -5,6 +5,9 @@
 		{"description": "A winding vine-laden path spirals up to the castle hilltop.",
 		"aliases": ["up", "path"],
 		"children": [],
-		"commands": ["move": "castle_path"]}
-	]
+		"commands": {
+			"walk":{"Move":"castle_path"}
+		}}
+	],
+	"commands":{}
 }

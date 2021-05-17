@@ -9,7 +9,7 @@ macro_rules! load_map {
         {let mut m = HashMap::new();
 
         $(
-            m.insert($x, from_str(include_str!(concat!("../../data/map/",$x,".json"))).unwrap());
+            m.insert($x, from_str(include_str!(concat!("../../data/map/",$x,".json"))).expect(format!("There was an issue in the '{}.json' file", $x).as_str()));
         )+
         m
     }};
