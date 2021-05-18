@@ -1,4 +1,4 @@
-use crate::syscall::SysCall;
+use crate::syscall::{Command, SysCall};
 use core::fmt;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -9,15 +9,19 @@ pub type World = HashMap<&'static str, Node>;
 pub struct Node {
     pub description: String,
     pub aliases: Vec<String>,
-    pub children: Vec<Node>,
-    pub commands: HashMap<String, SysCall>,
+    pub children: Option<Vec<Node>>,
+    pub commands: HashMap<Command, SysCall>,
 }
 
 impl Display for Node {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{} ", self.description)?;
-        for c in &self.children {
-            write!(f, "{} ", c.description)?;
+        if self.description != "" {
+            write!(f, "{} ", self.description)?;
+        }
+        if self.children.is_some() {
+            for c in self.children.as_ref().unwrap() {
+                write!(f, "{}", c)?;
+            }
         }
         Ok(())
     }

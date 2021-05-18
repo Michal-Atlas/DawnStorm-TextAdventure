@@ -4,6 +4,8 @@ use serde_json::from_str;
 use std::collections::HashMap;
 use std::include_str;
 
+/// Loads a list of Json Files containing Map Nodes into a HashMa
+/// TODO: Find out how to use a PHF instead
 macro_rules! load_map {
     ($($x:literal),+) => {
         {let mut m = HashMap::new();

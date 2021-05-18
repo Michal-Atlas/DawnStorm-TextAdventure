@@ -22,10 +22,13 @@ fn main() {
         match line {
             Ok(l) => {
                 rl.add_history_entry(l.as_str());
-                if l == "exit" {
-                    break;
+                match l.as_str() {
+                    "exit" => break,
+                    "look around" => println!("{}", &world[current_room.as_str()]),
+                    _ => {
+                        parser(&mut player, &mut world, &mut current_room, &l);
+                    }
                 }
-                parser(&mut player, &mut world, &mut current_room, &l);
             }
             Err(ReadlineError::Eof) => {
                 println!("{}", "Sorry to see you go".bright_red().bold());

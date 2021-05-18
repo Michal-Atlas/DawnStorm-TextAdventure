@@ -1,13 +1,30 @@
 {
-	"description": "One of the Nicest places this time of year.",
-	"aliases": [],
-	"children": [
-		{"description": "A winding vine-laden path spirals up to the castle hilltop.",
-		"aliases": ["up", "path"],
-		"children": [],
-		"commands": {
-			"walk":{"Move":"castle_path"}
-		}}
-	],
-	"commands":{}
+  "description": "One of the Nicest places this time of year.",
+  "aliases": [],
+  "children": [
+    {
+      "description": "A winding vine-laden path spirals up to the castle hilltop.",
+      "aliases": ["up", "path"],
+      "commands": {
+        "Move": { "Move": "castle_path" }
+      }
+    },
+    {
+      "description": "A charming girl frolicks around smelling at the herbs and spices of the market.",
+      "aliases": ["girl", "woman"],
+      "children": [
+        {
+          "description": "",
+          "aliases": ["hair"],
+          "commands": {
+            "Talk": { "Print": "Sorry, I don't have time to talk." }
+          }
+        }
+      ],
+      "commands": {
+        "Talk": { "Print": "Heya, how can I help?" }
+      }
+    }
+  ],
+  "commands": {}
 }
