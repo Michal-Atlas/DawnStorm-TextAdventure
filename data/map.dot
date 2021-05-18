@@ -1,0 +1,22 @@
+graph {
+	{
+	node [shape = box]
+	
+	castle_underground
+	daniels_ranch
+	leanaras_magic_shop
+	spire_statutorium
+	spire_galateas_chambers
+	park_atrium
+
+	forest_outback
+	wolf_cave
+	basilisk_lake
+	saltwharf_arrival
+	faeria
+	manor
+	griffin_tower
+	}
+
+	castle_underground -- "Contains a Lost Soul"
+}
