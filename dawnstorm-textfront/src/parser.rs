@@ -22,7 +22,10 @@ pub fn parser(player: &mut Entity, world: &mut World, current_node: &mut String,
     // Search verb to apply verb on
     match room_search(
         &world[current_node.as_str()],
-        &input.map(|x| x.to_string().to_lowercase()).collect(),
+        &input
+            .map(|x| x.to_string().to_lowercase())
+            .collect::<Vec<_>>()
+            .as_slice(),
     ) {
         Some(s) => {
             // If the object has the associated Action

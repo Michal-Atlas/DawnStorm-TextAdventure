@@ -4,13 +4,10 @@ use dawnstorm_core::world::Node;
 /// by the query.
 /// Checks recursively if the returned result has a relevant child,
 /// if yes, returns the child.
-pub fn room_search<'a>(item: &'a Node, query: &Vec<String>) -> Option<&'a Node> {
+pub fn room_search<'a>(item: &'a Node, query: &[String]) -> Option<&'a Node> {
     let mut acc_max = 0;
     let mut ret = None;
-    if item.children.is_none() {
-        return None;
-    }
-    for n in item.children.as_ref().unwrap() {
+    for n in item.children.as_ref()? {
         let mut curr_max = 0;
         for q in query {
             if n.aliases.contains(&q) {
@@ -22,10 +19,8 @@ pub fn room_search<'a>(item: &'a Node, query: &Vec<String>) -> Option<&'a Node> 
             ret = Some(n);
         }
     }
-    if ret.is_some() {
-        if let Some(s) = room_search(ret.unwrap(), query) {
-            return Some(s);
-        }
+    if let Some(s) = room_search(ret?, query) {
+        return Some(s);
     }
 
     ret

@@ -1,8 +1,8 @@
-
 use dawnstorm_core::entity::{Entity, Size, Stat};
 
 use std::collections::HashMap;
 
+#[allow(unused_macros)]
 macro_rules! get_stat {
     ($name:expr, $var:expr) => {
         let mut rl = Editor::<()>::new();

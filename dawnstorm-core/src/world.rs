@@ -15,7 +15,7 @@ pub struct Node {
 
 impl Display for Node {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        if self.description != "" {
+        if self.description.is_empty() {
             write!(f, "{} ", self.description)?;
         }
         if self.children.is_some() {

@@ -38,7 +38,7 @@ impl Stat {
             8..=255 => 1,
             _ => return,
         };
-        self.spent = self.spent.checked_sub(self.max / divisor).unwrap_or(0);
+        self.spent = self.spent.saturating_sub(self.max / divisor);
     }
 }
 #[derive(Debug, Display, Serialize, Deserialize)]
